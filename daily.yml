@@ -1,0 +1,45 @@
+name: Өдөр тутмын шинэчлэл
+
+on:
+  schedule:
+    # Улаанбаатарын цагаар 15:00 (UTC 07:00). Арилжаа хаагдсаны дараа.
+    - cron: "0 7 * * 1-5"
+  workflow_dispatch:        # гараар ажиллуулах товч
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests beautifulsoup4 pandas
+
+      - name: Өгөгдөл татаж, хуудсыг шинэчлэх
+        run: python update.py
+
+      - name: Өгөгдлийг хадгалах
+        run: |
+          git config user.name "mse-tracker"
+          git config user.email "actions@github.com"
+          git add data docs
+          git diff --staged --quiet || git commit -m "Шинэчлэлт $(date -u +%Y-%m-%d)"
+          git push
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - uses: actions/deploy-pages@v4

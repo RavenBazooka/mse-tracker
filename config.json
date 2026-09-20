@@ -1,0 +1,112 @@
+{
+  "monthly_budget": 40540.54,
+  "fee_rate": 0.01,
+  "buys_per_month": 3,
+  "_tailbar": "target_weight: зорилтот жин (%). 0 = эзэмшсээр байх боловч шинээр нэмэхгүй.",
+  "universe": {
+    "KHAN": {
+      "target_weight": 12.5,
+      "dividend_per_share": 203.3
+    },
+    "GLMT": {
+      "target_weight": 12.5,
+      "dividend_per_share": 80
+    },
+    "APU": {
+      "target_weight": 12.5,
+      "dividend_per_share": 123.5
+    },
+    "QPAY": {
+      "target_weight": 12.5,
+      "dividend_per_share": 57.0
+    },
+    "LEND": {
+      "target_weight": 12.5,
+      "dividend_per_share": 16.5
+    },
+    "SUU": {
+      "target_weight": 12.5,
+      "dividend_per_share": 13.34
+    },
+    "TUM": {
+      "target_weight": 12.5,
+      "dividend_per_share": 21.0
+    },
+    "MSE": {
+      "target_weight": 12.5,
+      "dividend_per_share": 41.27
+    },
+    "CUMN": {
+      "target_weight": 0,
+      "dividend_per_share": 0
+    },
+    "GOV": {
+      "target_weight": 0,
+      "dividend_per_share": 0
+    },
+    "XAC": {
+      "target_weight": 0,
+      "dividend_per_share": 48
+    },
+    "TTL": {
+      "target_weight": 0,
+      "dividend_per_share": 3138
+    }
+  },
+  "holdings": {
+    "APU": {
+      "shares": 83.7838,
+      "cost": 83423.27
+    },
+    "CUMN": {
+      "shares": 190.1351,
+      "cost": 42987.65
+    },
+    "GOV": {
+      "shares": 67.5676,
+      "cost": 16856.08
+    },
+    "KHAN": {
+      "shares": 40.5405,
+      "cost": 53475.41
+    },
+    "MSE": {
+      "shares": 283.7838,
+      "cost": 90872.7
+    },
+    "QPAY": {
+      "shares": 166.8919,
+      "cost": 38676.08
+    }
+  },
+  "other_assets": [
+    {
+      "name": "КЭЙ ЭЙ БОНД 3.1",
+      "kind": "bond",
+      "value": 2360810.81,
+      "matures": "2028-07-22",
+      "note": "Жилийн ~21.2% (цэвэр 19.1%), улирал бүр хүү"
+    },
+    {
+      "name": "ERS (Монгол Алт)",
+      "kind": "stock_untracked",
+      "value": 60463.51,
+      "note": "III ангилал, үнийн өгөгдөл автоматаар татагдахгүй"
+    },
+    {
+      "name": "MFG (Мандал Ирээдүйн Өсөлт)",
+      "kind": "fund",
+      "value": 65422.03,
+      "note": "Хамтын сан"
+    }
+  ],
+  "alerts": {
+    "daily_move_pct": 8,
+    "stale_days": 10,
+    "dividend_season_months": [
+      2,
+      3,
+      4
+    ]
+  }
+}
