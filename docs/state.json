@@ -1,0 +1,164 @@
+{
+  "asof": "2026-09-17",
+  "updated": "2026-09-20 07:59",
+  "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
+  "monthly_budget": 36540.8,
+  "positions": {
+    "KHAN": {
+      "shares": 36.54,
+      "price": 1711.0,
+      "value": 62521.31,
+      "weight": 16.54,
+      "target": 12.5,
+      "yield": 11.88,
+      "med_turnover": 114767993.5
+    },
+    "GLMT": {
+      "shares": 0.0,
+      "price": 1254.0,
+      "value": 0.0,
+      "weight": 0.0,
+      "target": 12.5,
+      "yield": 6.38,
+      "med_turnover": 27831947.5
+    },
+    "APU": {
+      "shares": 75.52,
+      "price": 1072.0,
+      "value": 80954.87,
+      "weight": 21.42,
+      "target": 12.5,
+      "yield": 11.52,
+      "med_turnover": 27168254.18
+    },
+    "QPAY": {
+      "shares": 150.43,
+      "price": 417.37,
+      "value": 62783.38,
+      "weight": 16.61,
+      "target": 12.5,
+      "yield": 13.66,
+      "med_turnover": 14288337.21
+    },
+    "LEND": {
+      "shares": 0.0,
+      "price": 155.99,
+      "value": 0.0,
+      "weight": 0.0,
+      "target": 12.5,
+      "yield": 10.58,
+      "med_turnover": 4842971.41
+    },
+    "SUU": {
+      "shares": 0.0,
+      "price": 603.78,
+      "value": 0.0,
+      "weight": 0.0,
+      "target": 12.5,
+      "yield": 2.21,
+      "med_turnover": 3760045.92
+    },
+    "TUM": {
+      "shares": 0.0,
+      "price": 439.5,
+      "value": 0.0,
+      "weight": 0.0,
+      "target": 12.5,
+      "yield": 4.78,
+      "med_turnover": 6742634.6
+    },
+    "MSE": {
+      "shares": 255.79,
+      "price": 425.53,
+      "value": 108844.45,
+      "weight": 28.8,
+      "target": 12.5,
+      "yield": 9.7,
+      "med_turnover": 27447085.27
+    },
+    "CUMN": {
+      "shares": 171.38,
+      "price": 270.01,
+      "value": 46273.34,
+      "weight": 12.24,
+      "target": 0.0,
+      "yield": 0,
+      "med_turnover": 2537588.43
+    },
+    "GOV": {
+      "shares": 60.9,
+      "price": 271.88,
+      "value": 16557.85,
+      "weight": 4.38,
+      "target": 0.0,
+      "yield": 0,
+      "med_turnover": 2282340.71
+    },
+    "XAC": {
+      "shares": 0.0,
+      "price": 1387.0,
+      "value": 0.0,
+      "weight": 0.0,
+      "target": 0.0,
+      "yield": 3.46,
+      "med_turnover": 12547449.5
+    },
+    "TTL": {
+      "shares": 0.0,
+      "price": 59500.0,
+      "value": 0.0,
+      "weight": 0.0,
+      "target": 0.0,
+      "yield": 5.27,
+      "med_turnover": 36364475.0
+    }
+  },
+  "buys": [
+    {
+      "symbol": "GLMT",
+      "amount": 12058.46,
+      "price": 1254.0,
+      "shares": 9,
+      "limit": 1266.54,
+      "thin": false
+    },
+    {
+      "symbol": "TUM",
+      "amount": 12058.46,
+      "price": 439.5,
+      "shares": 27,
+      "limit": 443.89,
+      "thin": false
+    },
+    {
+      "symbol": "SUU",
+      "amount": 12058.46,
+      "price": 603.78,
+      "shares": 19,
+      "limit": 609.82,
+      "thin": false
+    }
+  ],
+  "alerts": [],
+  "other_assets": [
+    {
+      "name": "КЭЙ ЭЙ БОНД 3.1",
+      "kind": "bond",
+      "value": 2127892.81,
+      "matures": "2028-07-22",
+      "note": "Жилийн ~21.2% (цэвэр 19.1%), улирал бүр хүү"
+    }
+  ],
+  "performance": {
+    "invested": 407565.27,
+    "value": 497525.33,
+    "dividends": 48954.2,
+    "fees": 4035.3,
+    "xirr": 0.2919,
+    "xirr_price_only": 0.1807,
+    "benchmark_value": 512466.89,
+    "benchmark_xirr": 0.2096,
+    "first_trade": "2025-03-11",
+    "n_trades": 27
+  }
+}
