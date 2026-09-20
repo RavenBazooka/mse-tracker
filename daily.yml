@@ -35,8 +35,15 @@ jobs:
           git config user.name "mse-tracker"
           git config user.email "actions@github.com"
           git add data docs
-          git diff --staged --quiet || git commit -m "Шинэчлэлт $(date -u +%Y-%m-%d)"
-          git push
+          git diff --staged --quiet && echo "Өөрчлөлт алга" && exit 0
+          git commit -m "Шинэчлэлт $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}" || git rebase --abort
+            git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            echo "Дахин оролдож байна ($i)"; sleep 5
+          done
+          echo "push бүтэлгүйтлээ"; exit 1
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
