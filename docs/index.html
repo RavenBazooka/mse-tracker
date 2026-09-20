@@ -1,0 +1,100 @@
+<!doctype html><html lang="mn"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Багцын байдал</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"><style>
+:root{
+  --paper:#EEF1F0; --card:#FFFFFF; --ink:#16202B; --muted:#5C6B7A;
+  --line:#D7DEDC; --up:#2E6E4E; --down:#A4433B; --brass:#B8862F; --rule:#C3CCC9;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#11181E; --card:#18212A; --ink:#E7EDEB; --muted:#93A3AE;
+        --line:#26323C; --up:#63B58A; --down:#D9847C; --brass:#D9AC5A; --rule:#2C3944;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  font-variant-numeric:tabular-nums;line-height:1.5;}
+main{max-width:680px;margin:0 auto;padding:28px 18px 72px}
+h1{font-size:1.05rem;font-weight:600;margin:0;letter-spacing:.01em}
+h2{font-size:.95rem;font-weight:600;margin:38px 0 10px;padding-bottom:6px;
+   border-bottom:1px solid var(--rule)}
+.sub{color:var(--muted);font-size:.8rem;margin:2px 0 26px}
+.buy{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--brass);
+     padding:14px 16px;margin-bottom:8px;display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.buy .s{font-size:1.25rem;font-weight:600}
+.buy .r{text-align:right;font-size:.85rem;color:var(--muted)}
+.buy .amt{font-size:1rem;color:var(--ink);font-weight:500}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:right;font-weight:500;color:var(--muted);padding:6px 4px;border-bottom:1px solid var(--rule);font-size:.75rem}
+th:first-child,td:first-child{text-align:left}
+td{padding:9px 4px;border-bottom:1px solid var(--line);text-align:right}
+.up{color:var(--up)} .down{color:var(--down)}
+.bar{display:block;height:4px;background:var(--line);position:relative;margin-top:5px;width:100%}
+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--brass)}
+.bar u{position:absolute;top:-2px;height:8px;width:2px;background:var(--ink);opacity:.75}
+.note{background:var(--card);border:1px solid var(--line);padding:12px 14px;margin-bottom:6px;font-size:.85rem}
+.tot{display:flex;flex-wrap:wrap;gap:26px;margin:18px 0 4px}
+.tot div span{display:block;color:var(--muted);font-size:.75rem}
+.tot div b{font-size:1.15rem;font-weight:600}
+.scale{margin-top:28px;font-size:.8rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.scale input{width:90px;padding:5px 7px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink);font:inherit;font-size:.8rem;border-radius:2px}
+.scale input:focus{outline:2px solid var(--brass);outline-offset:1px}
+footer{margin-top:44px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--rule);padding-top:12px}
+</style></head><body><main>
+<h1>9 дүгээр сард юу авах вэ</h1>
+<p class="sub">Сарын <span class="k" data-v="40540.54" data-suffix="₮">40,541₮</span> · үнэ 2026-09-17-ний хаалтаар</p>
+<div class="buy"><div><div class="s">GLMT</div><div class="r"><span class="k" data-amt="13378.38" data-price="1254.0000">10</span> ш · дээд үнэ 1,267₮</div></div><div class="amt"><span class="k" data-v="13378.38" data-suffix="₮">13,378₮</span></div></div><div class="buy"><div><div class="s">TUM</div><div class="r"><span class="k" data-amt="13378.38" data-price="439.5000">30</span> ш · дээд үнэ 444₮</div></div><div class="amt"><span class="k" data-v="13378.38" data-suffix="₮">13,378₮</span></div></div><div class="buy"><div><div class="s">SUU</div><div class="r"><span class="k" data-amt="13378.38" data-price="603.7800">22</span> ш · дээд үнэ 610₮</div></div><div class="amt"><span class="k" data-v="13378.38" data-suffix="₮">13,378₮</span></div></div>
+
+<h2>Багц</h2>
+<div class="tot">
+  <div><span>Хувьцаа</span><b><span class="k" data-v="419303.88" data-suffix="₮">419,304₮</span></b></div>
+  <div><span>Ашиг</span><b class="up"><span class="k" data-v="93012.69" data-suffix="₮">93,013₮</span></b></div>
+  <div><span>Жилийн ногдол ашиг</span><b><span class="k" data-v="39813.78" data-suffix="₮">39,814₮</span></b></div>
+  <div><span>Зорилтоос хазайлт</span><b>50.0%</b></div>
+</div>
+<table><thead><tr><th>Хувьцаа</th><th>Үнэ</th><th>Ашиг</th><th>Үнэ цэнэ</th>
+<th>Жин / зорилт</th><th>Ног.ашиг</th></tr></thead><tbody><tr><td>MSE<span class="bar"><i style="width:29%"></i><u style="left:12%"></u></span></td><td>426</td><td class="up">+32.9%</td><td><span class="k" data-v="120758.52" data-suffix="₮">120,759₮</span></td><td>28.8 / 12</td><td>9.7%</td></tr><tr><td>APU<span class="bar"><i style="width:21%"></i><u style="left:12%"></u></span></td><td>1,072</td><td class="up">+7.7%</td><td><span class="k" data-v="89816.23" data-suffix="₮">89,816₮</span></td><td>21.4 / 12</td><td>11.5%</td></tr><tr><td>QPAY<span class="bar"><i style="width:17%"></i><u style="left:12%"></u></span></td><td>417</td><td class="up">+80.1%</td><td><span class="k" data-v="69655.67" data-suffix="₮">69,656₮</span></td><td>16.6 / 12</td><td>13.7%</td></tr><tr><td>KHAN<span class="bar"><i style="width:17%"></i><u style="left:12%"></u></span></td><td>1,711</td><td class="up">+29.7%</td><td><span class="k" data-v="69364.80" data-suffix="₮">69,365₮</span></td><td>16.5 / 12</td><td>11.9%</td></tr><tr><td>CUMN<span class="bar"><i style="width:12%"></i><u style="left:0%"></u></span></td><td>270</td><td class="up">+19.4%</td><td><span class="k" data-v="51338.38" data-suffix="₮">51,338₮</span></td><td>12.2 / 0</td><td>0.0%</td></tr><tr><td>GOV<span class="bar"><i style="width:4%"></i><u style="left:0%"></u></span></td><td>272</td><td class="up">+9.0%</td><td><span class="k" data-v="18370.28" data-suffix="₮">18,370₮</span></td><td>4.4 / 0</td><td>0.0%</td></tr><tr><td>GLMT<span class="bar"><i style="width:0%"></i><u style="left:12%"></u></span></td><td>1,254</td><td class="down">—</td><td><span class="k" data-v="0.00" data-suffix="₮">0₮</span></td><td>0.0 / 12</td><td>6.4%</td></tr><tr><td>LEND<span class="bar"><i style="width:0%"></i><u style="left:12%"></u></span></td><td>156</td><td class="down">—</td><td><span class="k" data-v="0.00" data-suffix="₮">0₮</span></td><td>0.0 / 12</td><td>10.6%</td></tr><tr><td>TUM<span class="bar"><i style="width:0%"></i><u style="left:12%"></u></span></td><td>440</td><td class="down">—</td><td><span class="k" data-v="0.00" data-suffix="₮">0₮</span></td><td>0.0 / 12</td><td>4.8%</td></tr><tr><td>SUU<span class="bar"><i style="width:0%"></i><u style="left:12%"></u></span></td><td>604</td><td class="down">—</td><td><span class="k" data-v="0.00" data-suffix="₮">0₮</span></td><td>0.0 / 12</td><td>2.2%</td></tr></tbody></table>
+
+<h2>Анхаарах зүйл</h2>
+<div class="note">Онцгой зүйл алга.</div>
+
+<h2>Бусад хөрөнгө</h2>
+<table><tbody><tr><td>КЭЙ ЭЙ БОНД 3.1</td><td colspan="4">Жилийн ~21.2% (цэвэр 19.1%), улирал бүр хүү</td><td>2,360,811₮</td></tr><tr><td>ERS (Монгол Алт)</td><td colspan="4">III ангилал, үнийн өгөгдөл автоматаар татагдахгүй</td><td>60,464₮</td></tr><tr><td>MFG (Мандал Ирээдүйн Өсөлт)</td><td colspan="4">Хамтын сан</td><td>65,422₮</td></tr>
+<tr><td><b>Нийт хөрөнгө</b></td><td colspan="4"></td><td><b><span class="k" data-v="2906000.23" data-suffix="₮">2,906,000₮</span></b></td></tr>
+</tbody></table>
+
+<div class="scale">
+  <label for="k">Хувийн коэффициент</label>
+  <input id="k" type="number" step="any" min="0" placeholder="1" inputmode="decimal">
+  <span id="khint">Зөвхөн энэ төхөөрөмж дээр хадгалагдана</span>
+</div>
+
+<script>
+(function(){
+  var box=document.getElementById('k'), hint=document.getElementById('khint');
+  function get(){ try{ return parseFloat(localStorage.getItem('mse-scale'))||1; }catch(e){ return 1; } }
+  function nf(v){ return Math.round(v).toLocaleString('en-US'); }
+  function apply(k){
+    document.querySelectorAll('.k').forEach(function(el){
+      if(el.dataset.amt){
+        var p=parseFloat(el.dataset.price);
+        el.textContent = p ? nf(Math.floor(parseFloat(el.dataset.amt)*k/p)) : '—';
+      } else {
+        el.textContent = nf(parseFloat(el.dataset.v)*k) + (el.dataset.suffix||'');
+      }
+    });
+    hint.textContent = k===1 ? 'Зөвхөн энэ төхөөрөмж дээр хадгалагдана'
+                             : 'Бодит дүнгээр харуулж байна';
+  }
+  var k=get(); if(k!==1) box.value=k; apply(k);
+  box.addEventListener('input', function(){
+    var v=parseFloat(box.value)||1;
+    try{ localStorage.setItem('mse-scale', v); }catch(e){}
+    apply(v);
+  });
+})();
+</script>
+
+<footer>Шинэчлэгдсэн 2026-09-20 06:23 · өгөгдөл open.mse.mn.
+Зөвлөгөө биш, зөвхөн өөрийн хяналтад зориулсан тооцоолол.</footer>
+</main></body></html>
