@@ -1,5 +1,5 @@
 {
-  "monthly_budget": 40540.54,
+  "monthly_budget": 36540.8,
   "fee_rate": 0.01,
   "buys_per_month": 3,
   "_tailbar": "target_weight: зорилтот жин (%). 0 = эзэмшсээр байх боловч шинээр нэмэхгүй.",
@@ -55,48 +55,48 @@
   },
   "holdings": {
     "APU": {
-      "shares": 83.7838,
-      "cost": 83423.27
+      "shares": 75.5177,
+      "cost": 75192.72
     },
     "CUMN": {
-      "shares": 190.1351,
-      "cost": 42987.65
+      "shares": 171.3764,
+      "cost": 38746.48
     },
     "GOV": {
-      "shares": 67.5676,
-      "cost": 16856.08
+      "shares": 60.9013,
+      "cost": 15193.06
     },
     "KHAN": {
-      "shares": 40.5405,
-      "cost": 53475.41
+      "shares": 36.5408,
+      "cost": 48199.51
     },
     "MSE": {
-      "shares": 283.7838,
-      "cost": 90872.7
+      "shares": 255.7856,
+      "cost": 81907.19
     },
     "QPAY": {
-      "shares": 166.8919,
-      "cost": 38676.08
+      "shares": 150.4263,
+      "cost": 34860.29
     }
   },
   "other_assets": [
     {
       "name": "КЭЙ ЭЙ БОНД 3.1",
       "kind": "bond",
-      "value": 2360810.81,
+      "value": 2127892.81,
       "matures": "2028-07-22",
       "note": "Жилийн ~21.2% (цэвэр 19.1%), улирал бүр хүү"
     },
     {
       "name": "ERS (Монгол Алт)",
       "kind": "stock_untracked",
-      "value": 60463.51,
+      "value": 54498.17,
       "note": "III ангилал, үнийн өгөгдөл автоматаар татагдахгүй"
     },
     {
       "name": "MFG (Мандал Ирээдүйн Өсөлт)",
       "kind": "fund",
-      "value": 65422.03,
+      "value": 58967.48,
       "note": "Хамтын сан"
     }
   ],
