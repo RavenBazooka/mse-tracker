@@ -19,6 +19,7 @@ from pathlib import Path
 import pandas as pd
 
 import mse_scraper as mse
+import performance as perf
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
@@ -269,6 +270,33 @@ def render(state: dict, cfg: dict) -> str:
         f'<tr><td>{o["name"]}</td><td colspan="4">{o.get("note","")}</td>'
         f'<td>{fmt(o["value"])}</td></tr>' for o in state["other"])
 
+    p = state.get("perf")
+    if p:
+        mine = p["value"] + p["dividends"]
+        diff = p["value"] - p["bench_value"]
+        extra = "".join(
+            f'<tr><td>{s}</td><td>{fmt(r.price,"")}</td><td>{money(r.shares * r.price)}</td>'
+            f'<td>{pct((r.price / r.avg_cost - 1) * 100, True)}</td></tr>'
+            for s, r in p["positions"].iterrows() if s not in df.index)
+        perf_block = f"""<h2>Үр дүн</h2>
+<table><tbody>
+<tr><td>Оруулсан (шимтгэлтэй)</td><td>{money(p['invested'])}</td></tr>
+<tr><td>Одоогийн үнэ цэнэ</td><td>{money(p['value'])}</td></tr>
+<tr><td>Хүлээн авсан ногдол ашиг</td><td>{money(p['dividends'])}</td></tr>
+<tr><td>Нийт (үнэ цэнэ + ногдол ашиг)</td><td><b>{money(mine)}</b></td></tr>
+<tr><td>Жилийн өгөөж, ногдол ашгийн хамт</td><td>{pct((p['xirr'] or 0) * 100)}</td></tr>
+</tbody></table>
+<p class="sub">Жишигтэй харьцуулалт — ижил мөнгийг ижил өдөр 8 хувьцааны жигд сагсанд
+оруулсан бол. Хоёр тал зөвхөн ханшийн өөрчлөлтөөр, ногдол ашиггүйгээр.</p>
+<table><thead><tr><th>Харьцуулалт</th><th>Жилийн өгөөж</th><th>Үнэ цэнэ</th></tr></thead><tbody>
+<tr><td>Таны багц</td><td>{pct((p['xirr_price_only'] or 0) * 100)}</td><td>{money(p['value'])}</td></tr>
+<tr><td>Жигд сагс</td><td>{pct((p['bench_xirr'] or 0) * 100)}</td><td>{money(p['bench_value'])}</td></tr>
+<tr><td><b>Зөрүү</b></td><td></td><td class="{'up' if diff >= 0 else 'down'}"><b>{money(diff)}</b></td></tr>
+</tbody></table>
+{'<table><thead><tr><th>Хянагдахгүй</th><th>Үнэ</th><th>Үнэ цэнэ</th><th>Ашиг</th></tr></thead><tbody>' + extra + '</tbody></table>' if extra else ''}"""
+    else:
+        perf_block = ""
+
     pnl = state["stock_value"] - state["cost"]
     return f"""<!doctype html><html lang="mn"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -286,6 +314,8 @@ def render(state: dict, cfg: dict) -> str:
 </div>
 <table><thead><tr><th>Хувьцаа</th><th>Үнэ</th><th>Ашиг</th><th>Үнэ цэнэ</th>
 <th>Жин / зорилт</th><th>Ног.ашиг</th></tr></thead><tbody>{body}</tbody></table>
+
+{perf_block}
 
 <h2>Анхаарах зүйл</h2>
 {alerts}
@@ -332,11 +362,86 @@ def render(state: dict, cfg: dict) -> str:
 </main></body></html>"""
 
 
+def load_config() -> dict:
+    """config.json-ыг уншиж, алдааг ойлгомжтой хэлнэ."""
+    path = ROOT / "config.json"
+    try:
+        cfg = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        line = path.read_text(encoding="utf-8").splitlines()[max(e.lineno - 1, 0)]
+        raise SystemExit(
+            f"config.json-ын бичлэг буруу байна: {e.msg}\n"
+            f"  {e.lineno}-р мөр: {line.strip()}\n"
+            "  Түгээмэл шалтгаан: сүүлийн мөрийн ард илүү таслал үлдсэн, "
+            "хаалт дутуу, эсвэл тоог 83,78 гэж таслалтай бичсэн (83.78 байх ёстой).")
+
+    for key in ("monthly_budget", "fee_rate", "buys_per_month", "universe", "holdings"):
+        if key not in cfg:
+            raise SystemExit(f"config.json дотор '{key}' талбар алга.")
+    for sym, h in cfg["holdings"].items():
+        for f in ("shares", "cost"):
+            if not isinstance(h.get(f), (int, float)):
+                raise SystemExit(f"config.json: {sym} дахь '{f}' тоо байх ёстой, одоо {h.get(f)!r} байна.")
+    if cfg["monthly_budget"] <= 0:
+        raise SystemExit("config.json: monthly_budget 0-ээс их байх ёстой.")
+    missing = set(cfg["holdings"]) - set(cfg["universe"])
+    if missing:
+        raise SystemExit("config.json: эдгээр эзэмшил universe хэсэгт алга: "
+                         + ", ".join(sorted(missing)))
+    return cfg
+
+
+def write_exports(px: pd.DataFrame, state: dict, cfg: dict):
+    """Гадны шинжилгээнд зориулсан хураангуй файлууд. prices.csv хэт том тул."""
+    wide = px.pivot_table(index="date", columns="symbol", values="close").sort_index().ffill()
+    wide = wide[wide.index > px["date"].max() - pd.DateOffset(years=5)]
+    wide.resample("W-FRI").last().round(2).to_csv(DATA / "weekly.csv", encoding="utf-8-sig")
+
+    def clean(v):
+        """numpy төрлийг энгийн Python төрөл болгоно."""
+        v = v.item() if hasattr(v, "item") else v
+        return round(v, 2) if isinstance(v, float) else v
+
+    df, p = state["df"], state.get("perf")
+    snap = {
+        "asof": f"{state['asof']:%Y-%m-%d}",
+        "updated": f"{datetime.now():%Y-%m-%d %H:%M}",
+        "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
+        "monthly_budget": cfg["monthly_budget"],
+        "positions": {s: {"shares": clean(r["shares"]), "price": clean(r["price"]),
+                          "value": clean(r["value"]), "weight": clean(r["weight"]),
+                          "target": clean(r["target"]), "yield": clean(r["yield_now"] or 0),
+                          "med_turnover": clean(r["med_turnover"])}
+                      for s, r in df.iterrows()},
+        "buys": [{k: clean(v) for k, v in b.items()} for b in state["buys"]],
+        "alerts": state["alerts"],
+        "other_assets": state["other"],
+    }
+    if p:
+        snap["performance"] = {
+            "invested": round(p["invested"], 2), "value": round(p["value"], 2),
+            "dividends": round(p["dividends"], 2), "fees": round(p["fees"], 2),
+            "xirr": round(p["xirr"] or 0, 4),
+            "xirr_price_only": round(p["xirr_price_only"] or 0, 4),
+            "benchmark_value": round(p["bench_value"], 2),
+            "benchmark_xirr": round(p["bench_xirr"] or 0, 4),
+            "first_trade": f"{p['first_trade']:%Y-%m-%d}", "n_trades": p["n_trades"],
+        }
+    (DOCS / "state.json").write_text(json.dumps(snap, ensure_ascii=False, indent=2),
+                                     encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-fetch", action="store_true")
     args = ap.parse_args()
-    cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
+    cfg = load_config()
+    trades = perf.load_trades()
+    if not trades.empty:          # trades.csv байвал эзэмшлийг түүнээс тооцно
+        pos = perf.positions(trades)
+        cfg["holdings"] = {s: {"shares": float(r.shares), "cost": float(r.cost)}
+                           for s, r in pos.iterrows()
+                           if s in cfg["universe"] and r.shares > 0}
     symbols = sorted(set(cfg["universe"]) | set(cfg["holdings"]))
 
     if not args.no_fetch:
@@ -344,8 +449,10 @@ def main():
         refresh_prices(symbols)
     px = load_prices()
     state = build_state(cfg, px)
+    state["perf"] = perf.evaluate(px, cfg)
     DOCS.mkdir(exist_ok=True)
     (DOCS / "index.html").write_text(render(state, cfg), encoding="utf-8")
+    write_exports(px, state, cfg)
     print(f"Бэлэн: docs/index.html · {state['asof']:%Y-%m-%d} · "
           f"хувьцаа {state['stock_value']:,.0f}₮")
 
