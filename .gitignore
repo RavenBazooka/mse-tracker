@@ -1,3 +1,4 @@
 config_real.json
 trades_real.csv
 dividends_real.csv
+__pycache__/
