@@ -161,11 +161,7 @@ def parse_prices(page: str, company_code: int) -> pd.DataFrame:
     return df.drop_duplicates("date", keep="last").sort_values("date")
 
 
-def parse_financials(page: str, company_code: int) -> dict | None:
-    soup = BeautifulSoup(page, "html.parser")
-    block = soup.select_one(".finance-report-item")
-    if block is None:
-        return None
+def _parse_finance_block(block, company_code: int) -> dict:
     heading = block.find("h5").get_text(" ", strip=True) if block.find("h5") else ""
     pm = re.search(r"(\d{4})\s*Он\s*(\d)\s*Улирал", heading)
     rec = {"company_code": company_code,
@@ -179,6 +175,33 @@ def parse_financials(page: str, company_code: int) -> dict | None:
             rec[FIN_LABELS[label]] = to_number(li.find("b").get_text())
     rec["sector_kind"] = next((k for mk, k in SECTOR_MARKERS if mk in labels), "general")
     return rec
+
+
+def parse_financials(page: str, company_code: int) -> dict | None:
+    """Хуудсан дахь эхний (=хамгийн сүүлийн) улирлын тайлан."""
+    soup = BeautifulSoup(page, "html.parser")
+    block = soup.select_one(".finance-report-item")
+    return _parse_finance_block(block, company_code) if block is not None else None
+
+
+def parse_financials_history(page: str, company_code: int) -> list[dict]:
+    """/financials/filter?year=<жил> хариунд байгаа БҮХ улирлын тайлан."""
+    soup = BeautifulSoup(page, "html.parser")
+    return [_parse_finance_block(b, company_code) for b in soup.select(".finance-report-item")]
+
+
+def fetch_financials_year(code: int, year: int, use_cache: bool = True) -> str:
+    """Тухайн жилийн бүх улирлын тайланг агуулсан HTML хэсгийг буцаана.
+
+    /securities/<код>/financials/filter?year=<жил> нь тухайн ОНЫ (тайлангийн
+    үеийн, файлласан огнооны биш) бүх улирлыг нэг JSON хариунд буцаадаг.
+    """
+    raw = fetch(f"/securities/{code}/financials/filter?year={year}", use_cache=use_cache)
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        return ""
+    return data.get("html", "") if data.get("success") else ""
 
 
 # ---------------------------------------------------------------- analytics

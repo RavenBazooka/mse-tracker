@@ -19,6 +19,7 @@ from pathlib import Path
 import pandas as pd
 
 import mse_scraper as mse
+import monitor
 import performance as perf
 
 ROOT = Path(__file__).parent
@@ -55,14 +56,17 @@ def pct(n, sign=False):
 
 
 # ------------------------------------------------------------------ өгөгдөл
-def refresh_prices(symbols: list[str]) -> pd.DataFrame:
+def symbol_codes() -> dict[str, int]:
+    """Симбол -> компанийн код."""
+    secs = mse.parse_securities(mse.fetch("/securities", use_cache=False))
+    return dict(zip(secs.symbol.str.upper(), secs.company_code))
+
+
+def refresh_prices(symbols: list[str], code_of: dict[str, int]) -> pd.DataFrame:
     """Симбол бүрийн бүх түүхийг татаж, өмнөх өгөгдөлтэй нэгтгэнэ."""
     DATA.mkdir(exist_ok=True)
     path = DATA / "prices.csv"
     old = pd.read_csv(path) if path.exists() else pd.DataFrame()
-
-    secs = mse.parse_securities(mse.fetch("/securities", use_cache=False))
-    code_of = dict(zip(secs.symbol.str.upper(), secs.company_code))
     frames = []
     for sym in symbols:
         code = code_of.get(sym.upper())
@@ -297,6 +301,28 @@ def render(state: dict, cfg: dict) -> str:
     else:
         perf_block = ""
 
+    f = state.get("fin") or {"rows": [], "notices": []}
+    if f["rows"]:
+        fin_rows = "".join(
+            f'<tr><td>{r["symbol"]}</td><td>{r["period"]}</td>'
+            f'<td>{pct(r["roe"])}</td><td>{fmt(r["eps"], "")}</td>'
+            f'<td>{pct(r["debt"])}</td>'
+            f'<td class="{"up" if (r["profit_chg"] or 0) >= 0 else "down"}">'
+            f'{pct(r["profit_chg"], True)}</td></tr>' for r in f["rows"])
+        fin_block = ('<table><thead><tr><th>Хувьцаа</th><th>Тайлан</th><th>ROE</th>'
+                     '<th>EPS</th><th>Өр/хөрөнгө</th><th>Ашгийн өөрчлөлт</th></tr></thead>'
+                     f'<tbody>{fin_rows}</tbody></table>'
+                     '<p class="sub">Ашгийн өөрчлөлт нь өмнөх оны мөн улиралтай '
+                     'харьцуулсан дүн. Тайлан хуримтлагдсан байдлаар гардаг тул '
+                     'зэргэлдээ улирлыг харьцуулах нь буруу.</p>')
+    else:
+        fin_block = ('<div class="note">Тайлан хараахан хуримтлагдаагүй. '
+                     'Эхний улирлын харьцуулалт дараагийн тайлан гарахад бэлэн болно.</div>')
+    if f["notices"]:
+        fin_block += "<h2>Компанийн мэдэгдэл</h2>" + "".join(
+            f'<div class="note"><b>{n["symbol"]}</b> · {n["date"]} · {n["kind"]}<br>'
+            f'{n["title"]}</div>' for n in f["notices"])
+
     pnl = state["stock_value"] - state["cost"]
     return f"""<!doctype html><html lang="mn"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -316,6 +342,9 @@ def render(state: dict, cfg: dict) -> str:
 <th>Жин / зорилт</th><th>Ног.ашиг</th></tr></thead><tbody>{body}</tbody></table>
 
 {perf_block}
+
+<h2>Санхүүгийн байдал</h2>
+{fin_block}
 
 <h2>Анхаарах зүйл</h2>
 {alerts}
@@ -415,6 +444,8 @@ def write_exports(px: pd.DataFrame, state: dict, cfg: dict):
                       for s, r in df.iterrows()},
         "buys": [{k: clean(v) for k, v in b.items()} for b in state["buys"]],
         "alerts": state["alerts"],
+        "financials": (state.get("fin") or {}).get("rows", []),
+        "notices": (state.get("fin") or {}).get("notices", []),
         "other_assets": state["other"],
     }
     if p:
@@ -446,10 +477,16 @@ def main():
 
     if not args.no_fetch:
         print("Өгөгдөл татаж байна...")
-        refresh_prices(symbols)
+        code_of = symbol_codes()
+        refresh_prices(symbols, code_of)
+        print("Тайлан, мэдээ шалгаж байна...")
+        monitor.refresh(symbols, code_of)
     px = load_prices()
     state = build_state(cfg, px)
     state["perf"] = perf.evaluate(px, cfg)
+    state["fin"] = monitor.summary([s for s, u in cfg["universe"].items()
+                                    if u["target_weight"] > 0 or s in cfg["holdings"]])
+    state["alerts"] = state["fin"]["alerts"] + state["alerts"]
     DOCS.mkdir(exist_ok=True)
     (DOCS / "index.html").write_text(render(state, cfg), encoding="utf-8")
     write_exports(px, state, cfg)
