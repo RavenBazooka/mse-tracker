@@ -75,13 +75,16 @@ _session.headers.update(HEADERS)
 
 
 def fetch(path: str, use_cache: bool = True, retries: int = 3) -> str:
-    """Хуудсыг татна. Давтан ажиллуулахад серверт очихгүйн тулд кэшлэнэ."""
+    """Хуудсыг татна. `path` нь open.mse.mn доторх харьцангуй зам эсвэл
+    (жишээ нь mse.mn/news/<id> мэдэгдлийн хуудас шиг) бүрэн URL байж болно.
+    Давтан ажиллуулахад серверт очихгүйн тулд кэшлэнэ."""
+    url = path if path.startswith("http") else BASE_URL + path
     cache_file = CACHE_DIR / (re.sub(r"[^\w]+", "_", path).strip("_") + ".html")
     if use_cache and cache_file.exists():
         return cache_file.read_text(encoding="utf-8")
     for attempt in range(1, retries + 1):
         try:
-            r = _session.get(BASE_URL + path, timeout=30)
+            r = _session.get(url, timeout=30)
             r.raise_for_status()
             CACHE_DIR.mkdir(exist_ok=True)
             cache_file.write_text(r.text, encoding="utf-8")

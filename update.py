@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import math
 from datetime import date, datetime, timedelta
@@ -319,9 +320,14 @@ def render(state: dict, cfg: dict) -> str:
         fin_block = ('<div class="note">Тайлан хараахан хуримтлагдаагүй. '
                      'Эхний улирлын харьцуулалт дараагийн тайлан гарахад бэлэн болно.</div>')
     if f["notices"]:
-        fin_block += "<h2>Компанийн мэдэгдэл</h2>" + "".join(
-            f'<div class="note"><b>{n["symbol"]}</b> · {n["date"]} · {n["kind"]}<br>'
-            f'{n["title"]}</div>' for n in f["notices"])
+        def _notice(n):
+            title = html.escape(n["title"])
+            url = n.get("url")
+            title_html = (f'<a href="{html.escape(url)}" target="_blank" rel="noopener">{title}</a>'
+                          if isinstance(url, str) and url else title)
+            return (f'<div class="note"><b>{n["symbol"]}</b> · {n["date"]} · {n["kind"]}<br>'
+                    f'{title_html}</div>')
+        fin_block += "<h2>Компанийн мэдэгдэл</h2>" + "".join(_notice(n) for n in f["notices"])
 
     pnl = state["stock_value"] - state["cost"]
     return f"""<!doctype html><html lang="mn"><head><meta charset="utf-8">

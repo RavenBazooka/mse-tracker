@@ -68,7 +68,16 @@ def classify(title: str) -> str:
 
 
 def extract_dps(title: str) -> float | None:
-    """Гарчгаас нэгж хувьцаанд ногдох дүнг сугалах оролдлого."""
+    """Гарчгаас нэгж хувьцаанд ногдох дүнг сугалах оролдлого.
+
+    Компанийн хуудасны жагсаалтад зөвхөн гарчиг байдаг (дүн, бүртгэлийн өдөр
+    ордоггүй). Бүтэн дүнг mse.mn/news/<id> хуудаснаас авах боломжгүй, учир нь
+    тэр агуулга зөвхөн клиент талын JavaScript (Next.js)-аар ачаалагддаг бөгөөд
+    тогтмол бус дотоод протокол ашигладаг тул `requests`-ээр найдвартай уншиж
+    болохгүй. Тиймээс зөвхөн гарчигт дүн бичигдсэн ховор тохиолдолд л олно;
+    ихэвчлэн олохгүй бөгөөд тэр үед хэрэглэгч мэдэгдлийг өөрөө нээж шалгах
+    шаардлагатай.
+    """
     m = re.search(r"([\d\s,\.]+)\s*(?:төгрөг|төг)", title)
     if not m:
         return None
@@ -160,8 +169,8 @@ def summary(symbols: list[str]) -> dict:
         notices = n.to_dict("records")
         recent = n[n.date >= str(pd.Timestamp.today().date() - pd.Timedelta(days=45))]
         for r in recent[recent.kind == "ногдол ашиг"].to_dict("records"):
-            dps = f", нэгж хувьцаанд {r['dps']:.0f}₮" if r.get("dps") else ""
+            dps = f", нэгж хувьцаанд {r['dps']:.2f}₮" if pd.notna(r.get("dps")) else ""
             alerts.append(f"{r['symbol']}: ногдол ашгийн мэдэгдэл гарсан ({r['date']}{dps}). "
-                          "Бүртгэлийн өдрийг шалгаж, config-оо шинэчлэх.")
+                          "Мэдэгдлийг нээж бүртгэлийн өдрийг шалгаад, config-оо шинэчлэх.")
 
     return {"rows": rows, "notices": notices, "alerts": alerts}
