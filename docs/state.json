@@ -1,6 +1,6 @@
 {
   "asof": "2026-09-18",
-  "updated": "2026-09-21 13:47",
+  "updated": "2026-09-21 04:55",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
   "monthly_budget": 45676.0,
   "positions": {
@@ -20,7 +20,7 @@
       "weight": 2.86,
       "target": 12.5,
       "yield": 6.38,
-      "med_turnover": 28675933.0
+      "med_turnover": 28967417.5
     },
     "APU": {
       "shares": 75.52,
@@ -29,7 +29,7 @@
       "weight": 19.11,
       "target": 12.5,
       "yield": 11.71,
-      "med_turnover": 28313114.51
+      "med_turnover": 28809484.04
     },
     "QPAY": {
       "shares": 150.43,
@@ -38,7 +38,7 @@
       "weight": 15.37,
       "target": 12.5,
       "yield": 13.38,
-      "med_turnover": 14340482.49
+      "med_turnover": 14385689.49
     },
     "LEND": {
       "shares": 0.0,
@@ -47,7 +47,7 @@
       "weight": 0.0,
       "target": 12.5,
       "yield": 10.56,
-      "med_turnover": 4842971.41
+      "med_turnover": 4912885.18
     },
     "SUU": {
       "shares": 19.85,
@@ -56,7 +56,7 @@
       "weight": 2.88,
       "target": 12.5,
       "yield": 2.2,
-      "med_turnover": 3930839.0
+      "med_turnover": 3992990.98
     },
     "TUM": {
       "shares": 27.41,
@@ -65,7 +65,7 @@
       "weight": 2.88,
       "target": 12.5,
       "yield": 4.79,
-      "med_turnover": 6825680.96
+      "med_turnover": 6979389.91
     },
     "MSE": {
       "shares": 255.79,
@@ -83,7 +83,7 @@
       "weight": 11.77,
       "target": 0.0,
       "yield": 0,
-      "med_turnover": 2556092.8
+      "med_turnover": 2590598.35
     },
     "GOV": {
       "shares": 60.9,
@@ -101,7 +101,7 @@
       "weight": 0.0,
       "target": 0.0,
       "yield": 3.47,
-      "med_turnover": 12506709.0
+      "med_turnover": 12401674.5
     },
     "TTL": {
       "shares": 0.0,
