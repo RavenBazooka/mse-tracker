@@ -1,8 +1,8 @@
 {
   "asof": "2026-09-18",
-  "updated": "2026-09-21 04:38",
+  "updated": "2026-09-21 13:47",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
-  "monthly_budget": 36540.8,
+  "monthly_budget": 45676.0,
   "positions": {
     "KHAN": {
       "shares": 36.54,
@@ -116,25 +116,25 @@
   "buys": [
     {
       "symbol": "LEND",
-      "amount": 14033.85,
+      "amount": 17486.25,
       "price": 156.26,
-      "shares": 89,
+      "shares": 111,
       "limit": 157.82,
       "thin": false
     },
     {
       "symbol": "GLMT",
-      "amount": 11083.87,
+      "amount": 13882.5,
       "price": 1253.0,
-      "shares": 8,
+      "shares": 11,
       "limit": 1265.53,
       "thin": false
     },
     {
       "symbol": "TUM",
-      "amount": 11057.67,
+      "amount": 13850.5,
       "price": 438.23,
-      "shares": 25,
+      "shares": 31,
       "limit": 442.61,
       "thin": false
     }
