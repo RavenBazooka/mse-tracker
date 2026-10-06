@@ -1,141 +1,141 @@
 {
-  "asof": "2026-10-02",
-  "updated": "2026-10-05 07:17",
+  "asof": "2026-10-05",
+  "updated": "2026-10-06 07:12",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
   "monthly_budget": 45676.0,
   "positions": {
     "KHAN": {
       "shares": 36.54,
-      "price": 1829.0,
-      "value": 66833.12,
-      "weight": 15.17,
+      "price": 1851.0,
+      "value": 67637.02,
+      "weight": 15.37,
       "target": 12.5,
-      "yield": 11.12,
-      "med_turnover": 124558723.0
+      "yield": 10.98,
+      "med_turnover": 124618034.0
     },
     "GLMT": {
       "shares": 9.5,
-      "price": 1296.0,
-      "value": 12312.78,
-      "weight": 2.79,
+      "price": 1288.0,
+      "value": 12236.77,
+      "weight": 2.78,
       "target": 12.5,
-      "yield": 6.17,
-      "med_turnover": 39715633.5
+      "yield": 6.21,
+      "med_turnover": 39716545.0
     },
     "APU": {
       "shares": 75.52,
-      "price": 1085.0,
-      "value": 81936.6,
-      "weight": 18.6,
+      "price": 1078.0,
+      "value": 81407.97,
+      "weight": 18.5,
       "target": 12.5,
-      "yield": 7.37,
-      "med_turnover": 35142767.0
+      "yield": 7.42,
+      "med_turnover": 36525170.0
     },
     "QPAY": {
       "shares": 150.43,
-      "price": 512.13,
-      "value": 77037.77,
-      "weight": 17.49,
+      "price": 515.13,
+      "value": 77489.05,
+      "weight": 17.61,
       "target": 12.5,
-      "yield": 11.13,
-      "med_turnover": 18843090.02
+      "yield": 11.07,
+      "med_turnover": 19254229.32
     },
     "LEND": {
       "shares": 0.0,
-      "price": 176.39,
+      "price": 175.54,
       "value": 0.0,
       "weight": 0.0,
       "target": 12.5,
-      "yield": 9.35,
-      "med_turnover": 5492183.76
+      "yield": 9.4,
+      "med_turnover": 5655312.84
     },
     "SUU": {
       "shares": 19.85,
-      "price": 612.37,
-      "value": 12157.87,
+      "price": 611.76,
+      "value": 12145.76,
       "weight": 2.76,
       "target": 12.5,
       "yield": 1.35,
-      "med_turnover": 4163524.42
+      "med_turnover": 4173421.43
     },
     "TUM": {
       "shares": 27.41,
-      "price": 467.42,
-      "value": 12809.93,
-      "weight": 2.91,
+      "price": 472.66,
+      "value": 12953.53,
+      "weight": 2.94,
       "target": 12.5,
-      "yield": 4.49,
-      "med_turnover": 7436082.5
+      "yield": 4.44,
+      "med_turnover": 7575146.15
     },
     "MSE": {
       "shares": 255.79,
-      "price": 425.05,
-      "value": 108721.67,
-      "weight": 24.68,
+      "price": 420.3,
+      "value": 107506.69,
+      "weight": 24.43,
       "target": 12.5,
-      "yield": 9.71,
-      "med_turnover": 31864729.2
+      "yield": 9.82,
+      "med_turnover": 32854100.59
     },
     "CUMN": {
       "shares": 171.38,
-      "price": 304.99,
-      "value": 52268.09,
-      "weight": 11.86,
+      "price": 305.0,
+      "value": 52269.8,
+      "weight": 11.88,
       "target": 0.0,
       "yield": 0,
       "med_turnover": 2701413.9
     },
     "GOV": {
       "shares": 60.9,
-      "price": 270.19,
-      "value": 16454.92,
+      "price": 270.0,
+      "value": 16443.35,
       "weight": 3.74,
       "target": 0.0,
       "yield": 0,
-      "med_turnover": 2529133.6
+      "med_turnover": 2640403.2
     },
     "XAC": {
       "shares": 0.0,
-      "price": 1687.0,
+      "price": 1683.0,
       "value": 0.0,
       "weight": 0.0,
       "target": 0.0,
       "yield": 2.85,
-      "med_turnover": 9820050.5
+      "med_turnover": 9928623.0
     },
     "TTL": {
       "shares": 0.0,
-      "price": 59400.0,
+      "price": 59250.0,
       "value": 0.0,
       "weight": 0.0,
       "target": 0.0,
-      "yield": 5.28,
-      "med_turnover": 38722400.0
+      "yield": 5.3,
+      "med_turnover": 39034720.0
     }
   },
   "buys": [
     {
       "symbol": "LEND",
-      "amount": 17412.2,
-      "price": 176.39,
-      "shares": 98,
-      "limit": 178.15,
+      "amount": 17404.93,
+      "price": 175.54,
+      "shares": 99,
+      "limit": 177.3,
       "thin": false
     },
     {
       "symbol": "SUU",
-      "amount": 13925.73,
-      "price": 612.37,
+      "amount": 13920.21,
+      "price": 611.76,
       "shares": 22,
-      "limit": 618.49,
+      "limit": 617.88,
       "thin": false
     },
     {
       "symbol": "GLMT",
-      "amount": 13881.31,
-      "price": 1296.0,
+      "amount": 13894.1,
+      "price": 1288.0,
       "shares": 10,
-      "limit": 1308.96,
+      "limit": 1300.88,
       "thin": false
     }
   ],
@@ -323,13 +323,13 @@
   ],
   "performance": {
     "invested": 443991.91,
-    "value": 560122.88,
+    "value": 559680.08,
     "dividends": 48954.2,
     "fees": 4395.96,
-    "xirr": 0.3309,
-    "xirr_price_only": 0.2224,
-    "benchmark_value": 586496.97,
-    "benchmark_xirr": 0.2703,
+    "xirr": 0.3276,
+    "xirr_price_only": 0.2199,
+    "benchmark_value": 586459.01,
+    "benchmark_xirr": 0.2682,
     "first_trade": "2025-03-11",
     "n_trades": 32
   }
