@@ -14,6 +14,7 @@ import argparse
 import html
 import json
 import math
+import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
@@ -22,6 +23,9 @@ import pandas as pd
 import mse_scraper as mse
 import monitor
 import performance as perf
+
+# Windows-ийн консол монгол үсгийг хэвлэж чаддаггүй тул UTF-8 болгоно
+sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"

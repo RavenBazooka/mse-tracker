@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -21,6 +22,9 @@ import pandas as pd
 
 import monitor
 import mse_scraper as mse
+
+# Windows-ийн консол монгол үсгийг хэвлэж чаддаггүй тул UTF-8 болгоно
+sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).parent
 

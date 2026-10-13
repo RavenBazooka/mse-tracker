@@ -11,6 +11,9 @@ import json
 import sys
 from pathlib import Path
 
+# Windows-ийн консол монгол үсгийг хэвлэж чаддаггүй тул UTF-8 болгоно
+sys.stdout.reconfigure(encoding="utf-8")
+
 ROOT = Path(__file__).parent
 SRC, OUT = ROOT / "config_real.json", ROOT / "config.json"
 
