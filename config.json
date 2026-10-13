@@ -6,7 +6,7 @@
   "universe": {
     "KHAN": {
       "target_weight": 12.5,
-      "dividend_per_share": 203.3
+      "dividend_per_share": 214.0
     },
     "GLMT": {
       "target_weight": 12.5,
@@ -14,11 +14,11 @@
     },
     "APU": {
       "target_weight": 12.5,
-      "dividend_per_share": 80
+      "dividend_per_share": 145.0
     },
     "QPAY": {
       "target_weight": 12.5,
-      "dividend_per_share": 57.0
+      "dividend_per_share": 60.0
     },
     "LEND": {
       "target_weight": 12.5,
@@ -34,7 +34,7 @@
     },
     "MSE": {
       "target_weight": 12.5,
-      "dividend_per_share": 41.27
+      "dividend_per_share": 43.44
     },
     "CUMN": {
       "target_weight": 0,

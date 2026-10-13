@@ -1,6 +1,6 @@
 {
   "asof": "2026-10-09",
-  "updated": "2026-10-12 07:20",
+  "updated": "2026-10-13 11:18",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
   "monthly_budget": 45676.0,
   "positions": {
@@ -10,7 +10,7 @@
       "value": 74104.74,
       "weight": 16.74,
       "target": 12.5,
-      "yield": 10.02,
+      "yield": 10.55,
       "med_turnover": 128134307.0
     },
     "GLMT": {
@@ -28,7 +28,7 @@
       "value": 81634.53,
       "weight": 18.44,
       "target": 12.5,
-      "yield": 7.4,
+      "yield": 13.41,
       "med_turnover": 40146249.0
     },
     "QPAY": {
@@ -37,7 +37,7 @@
       "value": 78436.73,
       "weight": 17.72,
       "target": 12.5,
-      "yield": 10.93,
+      "yield": 11.51,
       "med_turnover": 21039057.75
     },
     "LEND": {
@@ -73,7 +73,7 @@
       "value": 104097.07,
       "weight": 23.51,
       "target": 12.5,
-      "yield": 10.14,
+      "yield": 10.67,
       "med_turnover": 38887824.79
     },
     "CUMN": {
