@@ -1,6 +1,6 @@
 {
   "asof": "2026-10-15",
-  "updated": "2026-10-16 01:27",
+  "updated": "2026-10-16 08:23",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
   "monthly_budget": 45676.0,
   "positions": {
@@ -56,7 +56,7 @@
       "weight": 2.8,
       "target": 12.5,
       "yield": 1.35,
-      "med_turnover": 4153627.42
+      "med_turnover": 4104385.19
     },
     "TUM": {
       "shares": 27.41,
@@ -74,7 +74,7 @@
       "weight": 20.87,
       "target": 12.5,
       "yield": 12.27,
-      "med_turnover": 42501803.72
+      "med_turnover": 42778554.99
     },
     "CUMN": {
       "shares": 171.38,
@@ -101,7 +101,7 @@
       "weight": 0.0,
       "target": 0.0,
       "yield": 2.87,
-      "med_turnover": 11253382.0
+      "med_turnover": 11682107.0
     },
     "TTL": {
       "shares": 0.0,
