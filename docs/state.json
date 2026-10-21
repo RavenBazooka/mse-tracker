@@ -1,6 +1,6 @@
 {
   "asof": "2026-10-20",
-  "updated": "2026-10-21 01:32",
+  "updated": "2026-10-21 13:25",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
   "monthly_budget": 45676.0,
   "positions": {
@@ -11,7 +11,7 @@
       "weight": 17.16,
       "target": 12.5,
       "yield": 10.27,
-      "med_turnover": 142937576.0
+      "med_turnover": 143701137.0
     },
     "GLMT": {
       "shares": 9.5,
@@ -65,7 +65,7 @@
       "weight": 3.14,
       "target": 12.5,
       "yield": 4.13,
-      "med_turnover": 9137689.19
+      "med_turnover": 9177581.98
     },
     "MSE": {
       "shares": 255.79,
@@ -83,7 +83,7 @@
       "weight": 11.72,
       "target": 0.0,
       "yield": 0,
-      "med_turnover": 2765807.05
+      "med_turnover": 2733610.47
     },
     "GOV": {
       "shares": 60.9,
@@ -110,7 +110,7 @@
       "weight": 0.0,
       "target": 0.0,
       "yield": 5.27,
-      "med_turnover": 42708600.0
+      "med_turnover": 42282575.0
     }
   },
   "buys": [
