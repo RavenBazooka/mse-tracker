@@ -1,6 +1,6 @@
 {
   "asof": "2026-10-28",
-  "updated": "2026-10-29 06:47",
+  "updated": "2026-10-29 14:57",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
   "monthly_budget": 45676.0,
   "positions": {
@@ -11,7 +11,7 @@
       "weight": 17.07,
       "target": 12.5,
       "yield": 10.42,
-      "med_turnover": 153375876.0
+      "med_turnover": 156114854.5
     },
     "GLMT": {
       "shares": 9.5,
@@ -20,7 +20,7 @@
       "weight": 2.77,
       "target": 12.5,
       "yield": 6.25,
-      "med_turnover": 45868982.0
+      "med_turnover": 47039887.5
     },
     "APU": {
       "shares": 75.52,
@@ -29,7 +29,7 @@
       "weight": 18.67,
       "target": 12.5,
       "yield": 13.35,
-      "med_turnover": 51892816.0
+      "med_turnover": 51985652.5
     },
     "QPAY": {
       "shares": 150.43,
@@ -65,7 +65,7 @@
       "weight": 2.99,
       "target": 12.5,
       "yield": 4.39,
-      "med_turnover": 9568027.24
+      "med_turnover": 9601332.73
     },
     "MSE": {
       "shares": 255.79,
@@ -74,7 +74,7 @@
       "weight": 23.53,
       "target": 12.5,
       "yield": 10.75,
-      "med_turnover": 45096362.94
+      "med_turnover": 45659491.52
     },
     "CUMN": {
       "shares": 171.38,
@@ -83,7 +83,7 @@
       "weight": 11.64,
       "target": 0.0,
       "yield": 0,
-      "med_turnover": 2888371.35
+      "med_turnover": 2875275.45
     },
     "GOV": {
       "shares": 60.9,
@@ -92,7 +92,7 @@
       "weight": 3.65,
       "target": 0.0,
       "yield": 0,
-      "med_turnover": 2051295.35
+      "med_turnover": 2034627.77
     },
     "XAC": {
       "shares": 0.0,
@@ -110,7 +110,7 @@
       "weight": 0.0,
       "target": 0.0,
       "yield": 5.27,
-      "med_turnover": 41527300.0
+      "med_turnover": 41691925.0
     }
   },
   "buys": [
