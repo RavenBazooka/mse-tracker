@@ -1,6 +1,6 @@
 {
   "asof": "2026-11-17",
-  "updated": "2026-11-18 08:16",
+  "updated": "2026-11-18 16:57",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
   "monthly_budget": 45676.0,
   "positions": {
@@ -29,7 +29,7 @@
       "weight": 18.44,
       "target": 12.5,
       "yield": 13.46,
-      "med_turnover": 52225671.0
+      "med_turnover": 52318463.5
     },
     "QPAY": {
       "shares": 150.43,
@@ -56,7 +56,7 @@
       "weight": 2.74,
       "target": 12.5,
       "yield": 1.36,
-      "med_turnover": 4198150.64
+      "med_turnover": 4126646.79
     },
     "TUM": {
       "shares": 27.41,
@@ -65,7 +65,7 @@
       "weight": 2.97,
       "target": 12.5,
       "yield": 4.39,
-      "med_turnover": 9568027.24
+      "med_turnover": 9445911.36
     },
     "MSE": {
       "shares": 255.79,
@@ -92,7 +92,7 @@
       "weight": 3.79,
       "target": 0.0,
       "yield": 0,
-      "med_turnover": 2525265.69
+      "med_turnover": 2527199.65
     },
     "XAC": {
       "shares": 0.0,
@@ -101,7 +101,7 @@
       "weight": 0.0,
       "target": 0.0,
       "yield": 3.37,
-      "med_turnover": 14029450.0
+      "med_turnover": 14077113.5
     },
     "TTL": {
       "shares": 0.0,
@@ -110,7 +110,7 @@
       "weight": 0.0,
       "target": 0.0,
       "yield": 5.4,
-      "med_turnover": 41527300.0
+      "med_turnover": 41691925.0
     }
   },
   "buys": [
@@ -141,8 +141,7 @@
   ],
   "alerts": [
     "CUMN: цэвэр ашиг жилийн өмнөхөөс -100% буурсан.",
-    "GLMT: цэвэр ашиг жилийн өмнөхөөс -38% буурсан.",
-    "GOV нэг өдөрт +9.2% хөдөлсөн. Мэдээ гарсан эсэхийг шалгах."
+    "GLMT: цэвэр ашиг жилийн өмнөхөөс -38% буурсан."
   ],
   "financials": [
     {
