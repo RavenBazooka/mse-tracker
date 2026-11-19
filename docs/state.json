@@ -1,6 +1,6 @@
 {
   "asof": "2026-11-18",
-  "updated": "2026-11-19 08:26",
+  "updated": "2026-11-19 17:03",
   "note": "Дүнгүүд масштаблагдсан. Хувь хэмжээ, ханш бодит.",
   "monthly_budget": 45676.0,
   "positions": {
@@ -20,7 +20,7 @@
       "weight": 2.75,
       "target": 12.5,
       "yield": 6.31,
-      "med_turnover": 46518628.0
+      "med_turnover": 46134501.0
     },
     "APU": {
       "shares": 75.52,
@@ -29,7 +29,7 @@
       "weight": 18.34,
       "target": 12.5,
       "yield": 13.65,
-      "med_turnover": 52225671.0
+      "med_turnover": 52059243.5
     },
     "QPAY": {
       "shares": 150.43,
@@ -47,7 +47,7 @@
       "weight": 0.0,
       "target": 12.5,
       "yield": 9.82,
-      "med_turnover": 7330049.43
+      "med_turnover": 7286878.08
     },
     "SUU": {
       "shares": 19.85,
